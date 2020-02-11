@@ -1,3 +1,5 @@
+import SpriteSheet from './SpriteSheet.js';
+
 function loadImage(url) {
     return new Promise(resolve => {
         const image = new Image();
@@ -15,5 +17,9 @@ context.fillRect(0, 0, 50, 50);
 
 loadImage('/img/tiles.png')
 .then(image => {
-    context.drawImage(image, 0, 0);
+    const sprites = new SpriteSheet(image, 16, 16);
+    sprites.define('ground', 0, 0);
+    sprites.draw('ground', context, 45, 62);
+
+   // context.drawImage(image, 0, 0);
 });
